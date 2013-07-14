@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <!-- Standard Meta -->
+  <meta charset="utf-8" />
+
+  <!-- Site Properities -->
+  <title>Static Site Generation With Docpad (Part 2) | Colyn Brown - Front-end Development Consultant</title>
+  <meta name="description" content="Personal site of Colyn Brown, Front-end development consultant (@colynb)" />
+  <meta name="keywords" content="javascript, nodejs, software development, docpad, octopress, jekyll, php, css, modular design, website design, website development, front-end development" />
+
+  <!-- DocPad Meta -->
+  <meta http-equiv="X-Powered-By" content="DocPad v6.45.0"/>
+
+  <!-- DocPad Styles + Our Own -->
+  <link  rel="stylesheet" href="/styles/style.css" />
+
+
+</head>
+
+<body>
+
+  <!--[if lt IE 7]>
+        <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+    <![endif]-->
+
+  <header role="banner" id="sidebar">
+    <!-- Logo -->
+<aside id="logo" class="clearfix">
+  <div class="clearfix">
+    <a href="/">Colyn Brown</a>
+  </div>
+</aside>
+
+<ul id="menu">
+
+  <li class="title">
+    <h1 id="title"><a href="/">Colyn Brown</a></h1>
+  </li>
+
+
+  <li class="subtitle">
+    <h2 id="subtitle">Front-end Development and Consulting Blog.</h2>
+  </li>
+
+  <li class="link">
+    <a href="/about.html">about</a>
+  </li>
+</ul>
+
+
+<!-- Octopress Love -->
+<aside id="octopress_linkback">
+  <a href="http://octopress.org/">
+    <span class="unicode_square">
+      <span class="unicode_circle">
+        &nbsp;
+      </span>
+    </span>
+    <span class="docpad">Powered by Docpad</span>
+    <p><small>&copy; 2013 Colyn Brown</small></p>
+  </a>
+</aside>
+
+  </header>
+  <section id="main">
+      
+  
+  
+    <article class="post">
+
+
+<h1 class="entry-title">Static Site Generation With Docpad (Part 2)</h1>
+<div><h2>Setting Up</h2>
+
+<p>The simplicity of setting up Docpad was one of the reasons I chose it over Octopress. The Docpad <a href="http://docpad.org/docs/intro">Getting Started Guide</a> is a great intro, so start there. The difficulty I had was in getting my site deployed to Github Pages. The Docpad deployment guide makes a lot of assumptions about your level of understanding of how Github Pages works. This is all they provide from the docs:</p>
+<pre>
+npm install --save docpad-plugin-ghpages
+docpad deploy-ghpages
+</pre>
+
+<p>This assumes that you&#39;ve already created a github repo that the Pages site will be pointing to. Also, it assumes you want to deploy to a <code>gh-pages</code> branch of the repo. This is wrong. To publish a blog to Github Pages, you need to push to your master branch. According to the <a href="https://help.github.com/articles/user-organization-and-project-pages">Github Pages documentation</a>, gh-pages is reserved for project landing pages, not regular site/blog pages.</p>
+<p>This is all too confusing. Instead of using the docpad github plugin, I decided to just push the output folder directly to the master branch of my repo using standard git commands. Doing this, I ran into a dilemma: I also want to commit all my docpad source code and configuration to github, but I want the out folder (which is inside the docpad folder) to be its own repo. You can&#39;t have a repo inside a repo, at least that&#39;s my experience. To solve this, I configured Docpad to generate all the output to a folder that lives above the root. So now, my folder structure is something like the following:</p>
+<pre>
+~/Sites/colynb.com
+    ├── OUTPUT (colynb.github.io.git)
+    │   ├── icons
+    │   ├── img
+    │   ├── index.html
+    │   ├── posts
+    │   ├── scripts
+    │   ├── styles
+    │   └── vendor
+    ├── SOURCE (colynb.github.io-SOURCE.git)
+    │   ├── docpad.coffee
+    │   ├── node_modules
+    │   ├── package.json
+    │   └── src
+    │       ├── documents
+    │       ├── files
+    │       └── layouts
+</pre>
+
+<p>To do this, you just need to tell Docpad where it should save the output. You do that by modifying the docpad.coffee file. Per the <a href="http://docpad.org/docs/config#available-configuration">config docs</a>, you just need to set the <code>outPath</code></p>
+<pre>
+outPath: '../OUTPUT'
+</pre>
+
+<p>This will allow you to create and maintain two separate repositories, one for the output (which gets pushed to Github Pages), and the other for your source code.</p>
+<h2>Deploying to Github Pages with your own Domain</h2>
+
+<p>I decided to host my site on Github, primarily because it&#39;s free, but also because I want eventually grow this site into something more like a wiki rather than a personal journal. Github will allow me to do this by giving community members access to my repo for making pull requests.</p>
+<p>As briefly explained above, Github Pages works via a specially named repository dedicated for that purpose. If you create a repository named: <code>[username].github.io</code> anything within the <code>master</code> branch of that repository will get hosted out on <a href="http://[username].github.io">http://[username].github.io</a>. So, for instance, my repository: <code>colynb.github.io</code> is hosted out on <a href="http://colynb.github.io">http://colynb.github.io</a></p>
+<p>The next step is to point your domain to the Github Pages IP address. Currently, this IP address is: <code>204.232.175.78</code> but check the docs just to make sure, since it&#39;s possible it could change. Next, checkout the <a href="https://help.github.com/articles/setting-up-a-custom-domain-with-pages">Setting up a custom domain with Pages</a>, doc. It tells you to create a <code>CNAME</code> text file with your domain name, in the root of your pages. So for me it was like this:</p>
+<pre>
+~/Sites/colynb.com
+    ├── OUTPUT (colynb.github.io.git)
+    │   ├── CNAME <--- contains "colynb.com"
+</pre>
+
+<p>Once you&#39;ve committed that to your repo and pushed it up, and you&#39;ve setup your domain to point to the right IP address, it should take Github about 10 minutes (plus the time for DNS cache to clear which could be an hour or more) to listen for that domain.</p>
+</div>
+
+<div id="disqus_thread"></div>
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'colynb-com'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+  
+
+
+    </article>
+  
+
+    <nav role="navigation" id="pagination">
+
+</nav>
+  </section>
+
+<script >(function(){
+	/* Did we just livereload? */
+var log = true && localStorage && console && console.log && true;
+if ( log && localStorage.getItem('/docpad-livereload/reloaded') === 'yes' ) {
+	localStorage.removeItem('/docpad-livereload/reloaded');
+	console.log('LiveReloaded at', new Date())
+}
+
+/* Listen for the regenerated event and perform a reload of the page when the event occurs */
+var listen = function(){
+	var socket = io.connect('/docpad-livereload');
+	socket.on('regenerated',function(){
+		if ( log ) {
+	localStorage.setItem('/docpad-livereload/reloaded', 'yes');
+}
+document.location.reload();
+	});
+};
+	if ( typeof io !== 'undefined' ) {
+		listen();
+	} else {
+		/* Inject socket.io into our page then listen once loaded */
+var inject = function(){
+	var t = document.createElement('script');
+	t.type = 'text/javascript';
+	t.async = true;
+	t.src = '/socket.io/socket.io.js';
+	t.onload = listen;
+	var s = document.getElementsByTagName('script')[0];
+	s.parentNode.insertBefore(t,s);
+};
+		var readyStateCheckInterval = setInterval(function() {
+  if (document.readyState === "complete") {
+    inject();
+    clearInterval(readyStateCheckInterval);
+  }
+}, 10);
+	}
+})();</script>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'colynb-com'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+    </script>
+    
+</body>
+</html>
