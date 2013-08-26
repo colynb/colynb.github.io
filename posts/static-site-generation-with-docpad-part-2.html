@@ -83,7 +83,8 @@
 
 
 <h1 class="entry-title">Static Site Generation With Docpad (Part 2)</h1>
-<div><h2>Setting Up</h2>
+<div><p><a href="/posts/static-site-generation-with-docpad-part-1.html">&lt; Part 1</a></p>
+<h2>Setting Up</h2>
 
 <p>The simplicity of setting up Docpad was one of the reasons I chose it over Octopress. The Docpad <a href="http://docpad.org/docs/intro">Getting Started Guide</a> is a great intro, so start there. The difficulty I had was in getting my site deployed to Github Pages. The Docpad deployment guide makes a lot of assumptions about your level of understanding of how Github Pages works. This is all they provide from the docs:</p>
 
@@ -92,8 +93,10 @@ npm install --save docpad-plugin-ghpages
 docpad deploy-ghpages
 </pre>
 
-<p><p>This assumes that you&#39;ve already created a github repo that the Pages site will be pointing to. Also, it assumes you want to deploy to a <code>gh-pages</code> branch of the repo. This is wrong. To publish a blog to Github Pages, you need to push to your master branch. According to the <a href="https://help.github.com/articles/user-organization-and-project-pages">Github Pages documentation</a>, gh-pages is reserved for project landing pages, not regular site/blog pages.</p></p>
-<p><p>This is all too confusing. Instead of using the docpad github plugin, I decided to just push the output folder directly to the master branch of my repo using standard git commands. Doing this, I ran into a dilemma: I also want to commit all my docpad source code and configuration to github, but I want the out folder (which is inside the docpad folder) to be its own repo. You can&#39;t have a repo inside a repo, at least that&#39;s my experience. To solve this, I configured Docpad to generate all the output to a folder that lives above the root. So now, my folder structure is something like the following:</p></p>
+<p>This assumes that you&#39;ve already created a github repo that the Pages site will be pointing to. Also, it assumes you want to deploy to a <code>gh-pages</code> branch of the repo. This is wrong. To publish a blog to Github Pages, you need to push to your master branch. According to the <a href="https://help.github.com/articles/user-organization-and-project-pages">Github Pages documentation</a>, gh-pages is reserved for project landing pages, not regular site/blog pages.</p>
+
+<p>This is all too confusing. Instead of using the docpad github plugin, I decided to just push the output folder directly to the master branch of my repo using standard git commands. Doing this, I ran into a dilemma: I also want to commit all my docpad source code and configuration to github, but I want the out folder (which is inside the docpad folder) to be its own repo. You can&#39;t have a repo inside a repo, at least that&#39;s my experience. To solve this, I configured Docpad to generate all the output to a folder that lives above the root. So now, my folder structure is something like the following:</p>
+
 <pre>
 ~/Sites/colynb.com
     ├── OUTPUT (colynb.github.io.git)
@@ -114,7 +117,8 @@ docpad deploy-ghpages
     │       └── layouts
 </pre>
 
-<p><p>To do this, you just need to tell Docpad where it should save the output. You do that by modifying the docpad.coffee file. Per the <a href="http://docpad.org/docs/config#available-configuration">config docs</a>, you just need to set the <code>outPath</code></p></p>
+<p>To do this, you just need to tell Docpad where it should save the output. You do that by modifying the docpad.coffee file. Per the <a href="http://docpad.org/docs/config#available-configuration">config docs</a>, you just need to set the <code>outPath</code></p>
+
 <pre>
 outPath: '../OUTPUT'
 </pre>
