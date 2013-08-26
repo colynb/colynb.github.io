@@ -12,10 +12,15 @@
   <meta name="keywords" content="javascript, nodejs, software development, docpad, octopress, jekyll, php, css, modular design, website design, website development, front-end development" />
 
   <!-- DocPad Meta -->
-  <meta http-equiv="X-Powered-By" content="DocPad v6.45.0"/>
+  <meta http-equiv="X-Powered-By" content="DocPad v6.50.0"/>
 
   <!-- DocPad Styles + Our Own -->
-  <link  rel="stylesheet" href="/styles/style.css" />
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+  <style >html.wait {
+	cursor: wait !important;
+	opacity: 0;
+	transition: opacity 0.5s ease;
+}</style><link  rel="stylesheet" href="/styles/style.css" />
 
 
 </head>
@@ -45,23 +50,27 @@
     <h2 id="subtitle">Front-end Development and Consulting Blog.</h2>
   </li>
 
-  <li class="link">
-    <a href="/about.html">about</a>
-  </li>
+  
+    <li class="link"><a href="/pages/about.html">About</a></li>
+  
+    <li class="link"><a href="/pages/projects.html">Projects</a></li>
+  
+
+  <li class="link"><a href="https://twitter.com/colynb"><img src="/img/twitter-small.png" style="vertical-align: middle;">&nbsp;@colynb</a></li>
+
+
 </ul>
 
 
 <!-- Octopress Love -->
-<aside id="octopress_linkback">
-  <a href="http://octopress.org/">
+<aside>
     <span class="unicode_square">
       <span class="unicode_circle">
         &nbsp;
       </span>
     </span>
-    <span class="docpad">Powered by Docpad</span>
+    <span class="docpad"><a href="http://docpad.org//">Powered by Docpad</a></span>
     <p><small>&copy; 2013 Colyn Brown</small></p>
-  </a>
 </aside>
 
   </header>
@@ -75,17 +84,20 @@
 <h1 class="entry-title">Static Site Generation With Docpad (Part 1)</h1>
 <div><h2>Introduction</h2>
 
-<p>Since this is my first blog entry, I think it makes sense for me to talk about the technology behind it a little. The whole site is statically generated on my Macbook using <a href="http://docpad.org/">Docpad</a>, and deployed to <a href="http://pages.github.com/">Github Pages</a>.</p>
-<p>&quot;Going static&quot; seems to be the trend within the coding community, and for good reason. Though static site generators are not at all new, I think a couple development trends have factored into it becoming popular.</p>
-<ol>
-<li><strong>Git all the things!</strong><br>
- Maybe it&#39;s just me but I really love using Git. It just makes managing my projects so much more sane. Branching, merging, committing, are all now just a natural extension to development that I almost don&#39;t even have to think about it anymore. Now that I&#39;m thoroughly accustomed to this kind of workflow, I find myself increasingly frustrated with managing Wordpress blogs. To do any development, I have to maintain at least two different MySQL databases, one for development and one for production. Then you have to repeat everything you did locally on your development box, such as installing plugins, and theme development, just to get your changes into production. With a static site, I can work completely local, commit my statically generated pages into git, and then push them up to my site. One source for all data and html.</li>
-<li><strong>The rise in laptop development</strong><br>
+<p><p>Since this is my first blog entry, I think it makes sense for me to talk about the technology behind it a little. The whole site is statically generated on my Macbook using <a href="http://docpad.org/">Docpad</a>, and deployed to <a href="http://pages.github.com/">Github Pages</a>.</p></p>
+<p><p>&quot;Going static&quot; seems to be the trend within the coding community, and for good reason. Though static site generators are not at all new, I think a couple development trends have factored into it becoming popular.</p></p>
+<p><ol></p>
+<p><li><strong>Git all the things!</strong><br>
+ Maybe it&#39;s just me but I really love using Git. It just makes managing my projects so much more sane. Branching, merging, committing, are all now just a natural extension to development that I almost don&#39;t even have to think about it anymore. Now that I&#39;m thoroughly accustomed to this kind of workflow, I find myself increasingly frustrated with managing Wordpress blogs. To do any development, I have to maintain at least two different MySQL databases, one for development and one for production. Then you have to repeat everything you did locally on your development box, such as installing plugins, and theme development, just to get your changes into production. With a static site, I can work completely local, commit my statically generated pages into git, and then push them up to my site. One source for all data and html.</li></p>
+<p><li><strong>The rise in laptop development</strong><br>
  Another big contributing factor in the popularity of static sites is that most developers I know work almost exclusively local. They do all their coding on their laptops. There are so many tools that help with this that it makes it so there really is no reason not to anymore. Logging into your live site through an admin interface, in my opinion seems outdated and cumbersome and open to too many possible security threats. Now that we&#39;re all working locally, it&#39;s the next logical step to just administer our blogs locally as well.</li>
-</ol>
-<p>So, after playing around with a couple different static site generators such as Jekyll and Octopress, I&#39;ve decided to use Docpad. Docpad is written in Node, while the others are based on Ruby. I like Docpad simply because it&#39;s less complicated to use. I like that I can just create a new html file, type out my post and save the file. Docpad takes care of the rest, keeping your pages DRY, while you work. It watches for changes and re-generates all your content out to a separate folder, which can then simply be uploaded to any web server.</p>
-<p>In the next post, I will walk you through <a href="/posts/static-site-generation-with-docpad-part-2.html">getting setup with Docpad</a>.</p>
+</ol></p>
+<p><p>So, after playing around with a couple different static site generators such as Jekyll and Octopress, I&#39;ve decided to use Docpad. Docpad is written in Node, while the others are based on Ruby. I like Docpad simply because it&#39;s less complicated to use. I like that I can just create a new html file, type out my post and save the file. Docpad takes care of the rest, keeping your pages DRY, while you work. It watches for changes and re-generates all your content out to a separate folder, which can then simply be uploaded to any web server.</p></p>
+<p><p>In the next post, I will walk you through <a href="/posts/static-site-generation-with-docpad-part-2.html">getting setup with Docpad</a>.</p>
+</div></p>
 </div>
+
+<hr>
 
 <div id="disqus_thread"></div>
     <script type="text/javascript">
@@ -114,41 +126,48 @@
 
 <script >(function(){
 	/* Did we just livereload? */
-var log = true && localStorage && console && console.log && true;
+var log = !!(localStorage && console && console.log && true);
 if ( log && localStorage.getItem('/docpad-livereload/reloaded') === 'yes' ) {
 	localStorage.removeItem('/docpad-livereload/reloaded');
-	console.log('LiveReloaded at', new Date())
+	console.log('LiveReload completed at', new Date())
 }
 
 /* Listen for the regenerated event and perform a reload of the page when the event occurs */
 var listen = function(){
-	var socket = io.connect('/docpad-livereload');
-	socket.on('regenerated',function(){
-		if ( log ) {
-	localStorage.setItem('/docpad-livereload/reloaded', 'yes');
+	var primus = new Primus('/docpad-livereload');
+	primus.on('data', function(data){
+		if ( data && data.message ) {
+			if ( data.message === 'generateBefore' ) {
+				if ( log ) {
+					console.log('LiveReload started at', new Date());
+				}
+				if ( typeof document.getElementsByTagName !== 'undefined' ) {
+	document.getElementsByTagName('html')[0].className += ' wait';
 }
-document.location.reload();
+			}
+			else if ( data.message === 'generateAfter' ) {
+				if ( log ) {
+					localStorage.setItem('/docpad-livereload/reloaded', 'yes');
+				}
+				document.location.reload();
+			}
+		}
 	});
 };
-	if ( typeof io !== 'undefined' ) {
-		listen();
-	} else {
-		/* Inject socket.io into our page then listen once loaded */
+	/* Inject socket into our page */
 var inject = function(){
 	var t = document.createElement('script');
 	t.type = 'text/javascript';
-	t.async = true;
-	t.src = '/socket.io/socket.io.js';
+	t.async = 'async';
+	t.src = '/primus/primus.js';
 	t.onload = listen;
 	var s = document.getElementsByTagName('script')[0];
-	s.parentNode.insertBefore(t,s);
+	s.parentNode.insertBefore(t, s);
 };
-		var readyStateCheckInterval = setInterval(function() {
-  if (document.readyState === "complete") {
-    inject();
-    clearInterval(readyStateCheckInterval);
-  }
-}, 10);
+	if ( typeof Primus !== 'undefined' ) {
+		listen();
+	} else {
+		inject();
 	}
 })();</script>
 <script type="text/javascript">
