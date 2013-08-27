@@ -7,81 +7,95 @@
   <meta charset="utf-8" />
 
   <!-- Site Properities -->
-  <title>About | Colyn Brown - Front-end Development Consultant</title>
+  <title>About | Tales from the Front-end!</title>
   <meta name="description" content="Personal site of Colyn Brown, Front-end development consultant (@colynb)" />
   <meta name="keywords" content="javascript, nodejs, software development, docpad, octopress, jekyll, php, css, modular design, website design, website development, front-end development" />
 
   <!-- DocPad Meta -->
   <meta http-equiv="X-Powered-By" content="DocPad v6.50.0"/>
 
-  <!-- DocPad Styles + Our Own -->
-  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
   <style >html.wait {
 	cursor: wait !important;
 	opacity: 0;
 	transition: opacity 0.5s ease;
-}</style><link  rel="stylesheet" href="/styles/style.css" />
+}</style><link  rel="stylesheet" href="/styles/bootstrap.css" /><link  rel="stylesheet" href="/styles/solarized_dark.css" />
+  <style>
 
+  #sidebar {
+	border-width: 0 0 1px;
+	padding: 40px;
+  }
+  #main {
+  	padding: 0 40px;
+  }
+  </style>
 
 </head>
 
 <body>
 
   <!--[if lt IE 7]>
-        <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
-    <![endif]-->
+		<p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+	<![endif]-->
 
-  <header role="banner" id="sidebar">
-    <!-- Logo -->
-<aside id="logo" class="clearfix">
-  <div class="clearfix">
-    <a href="/">Colyn Brown</a>
-  </div>
-</aside>
+<div class="">
 
-<ul id="menu">
+  <header role="banner" id="sidebar" class="col-lg-4">
 
-  <li class="title">
-    <h1 id="title"><a href="/">Colyn Brown</a></h1>
-  </li>
+	<aside id="logo" class="text-center">
+		<a href="/"><img src="/img/me.png"></a>
+	</aside>
 
 
-  <li class="subtitle">
-    <h2 id="subtitle">Front-end Development and Consulting Blog.</h2>
-  </li>
+	<h2>Tales from the<br> Front End</h2>
+	<h4>All about Javascript, CSS, and ... well just Javascript really.</h4>
 
-  
-    <li class="link"><a href="/pages/about.html">About</a></li>
-  
-    <li class="link"><a href="/pages/projects.html">Projects</a></li>
-  
+<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
 
-  <li><a href="https://twitter.com/colynb"><img src="/img/twitter-small.png" style="vertical-align: middle;">&nbsp;@colynb</a></li>
+<ul class="nav nav-stacked">
+	<li>
+		<a href="/">Home</a>
+	</li>
+	
+		<li class="link"><a href="/pages/about.html">Who is Colyn Brown?</a></li>
+  	
+		<li class="link"><a href="/pages/projects.html">Projects</a></li>
+  	
+	<li>
+		<a href="https://twitter.com/colynb"><img src="/img/twitter-small.png" style="vertical-align: middle;">&nbsp;@colynb</a>
+	</li>
 
-  <li><a href="https://github.com/colynb"><img src="/img/github-small.png" style="vertical-align: middle;">&nbsp;/colynb</a></li>
-
+	<li>
+		<a href="https://github.com/colynb"><img src="/img/github-small.png" style="vertical-align: middle;">&nbsp;/colynb</a>
+	</li>
 </ul>
 
+<hr>
 
-<!-- Octopress Love -->
-<aside>
-    <span class="unicode_square">
-      <span class="unicode_circle">
-        &nbsp;
-      </span>
-    </span>
-    <span class="docpad"><a href="http://docpad.org//">Powered by Docpad</a></span>
-    <p><small>&copy; 2013 Colyn Brown</small></p>
-</aside>
+<p class="visible-lg">
+<strong>Tweets from the front-end</strong>
+<a class="twitter-timeline" href="https://twitter.com/colynb/front-end-development" data-widget-id="364199002167726081">Tweets from @colynb/front-end-development</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+</p>
 
+<hr>
+
+<p><a rel="license" href="http://creativecommons.org/licenses/by-nc/3.0/deed.en_US"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc/3.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/3.0/deed.en_US">Creative Commons Attribution-NonCommercial 3.0 Unported License</a>.</p>
+
+<p><small><a href="http://docpad.org//">Powered by Docpad</a></small></p>
   </header>
-  <section id="main">
-      
+  <section id="main" class="panel panel-default col-lg-8">
+	  
   
   
-    <article class="post">
+	<article class="post panel-body">
 
 
+<label class="label label-default">Tue Aug 27 2013 12:57:08 GMT-0700 (MST)</label>
 <h1 class="entry-title">About</h1>
 <div><p>My name is Colyn Brown. I&#39;ve been a web developer since 1995 - almost 20 years now! I&#39;ve also been raising a family for not much longer than that.</p>
 <p>Though my experience in web development covers a lot of areas, I will be  focusing this site on front-end development and related technologies. However, as a consumer of dev blogs myself, the biggest problem I see with a lot of blogs especially ones in a tutorial format is that they are quickly out of date. Some of my entries will be written as a tutorial, but I want to avoid this dilemma.</p>
@@ -96,7 +110,11 @@ Found this useful? <a href="https://twitter.com/share" class="twitter-share-butt
 
 <hr>
 
-<p><a class="btn btn-default" href="https://github.com/colynb/colynb.github.io-SOURCE/blob/master/src/documents/./about.html.md">Edit This Page</a></p>
+<p><a class="btn btn-default" href="https://github.com/colynb/colynb.github.io-SOURCE/blob/master/src/documents/./about.html.md">Edit This Page</a>
+
+&nbsp;&nbsp;<span class="glyphicon glyphicon-hand-left"></span> <span class="text-muted">You too can edit this page! ... just make your change then submit a pull request!</span>
+
+</p>
 
 <hr>
 
@@ -117,14 +135,12 @@ Found this useful? <a href="https://twitter.com/share" class="twitter-share-butt
   
 
 
-    </article>
+	</article>
   
-
-    <nav role="navigation" id="pagination">
-
-</nav>
   </section>
 
+</div>
+<!--- SCripts -->
 <script >(function(){
 	/* Did we just livereload? */
 var log = !!(localStorage && console && console.log && true);
@@ -170,19 +186,19 @@ var inject = function(){
 	} else {
 		inject();
 	}
-})();</script>
+})();</script><script defer="defer"  src="/vendor/log.js"></script><script defer="defer"  src="/vendor/modernizr.js"></script><script defer="defer"  src="http://code.jquery.com/jquery-1.10.1.min.js"></script><script defer="defer"  src="/scripts/script.js"></script><script defer="defer"  src="/scripts/bootstrap.js"></script>
 <script type="text/javascript">
-    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-    var disqus_shortname = 'colynb-com'; // required: replace example with your forum shortname
+	/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+	var disqus_shortname = 'colynb-com'; // required: replace example with your forum shortname
 
-    /* * * DON'T EDIT BELOW THIS LINE * * */
-    (function () {
-        var s = document.createElement('script'); s.async = true;
-        s.type = 'text/javascript';
-        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
-        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-    }());
-    </script>
-    
+	/* * * DON'T EDIT BELOW THIS LINE * * */
+	(function () {
+		var s = document.createElement('script'); s.async = true;
+		s.type = 'text/javascript';
+		s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+		(document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+	}());
+	</script>
+	
 </body>
 </html>
