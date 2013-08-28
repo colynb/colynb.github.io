@@ -29,6 +29,11 @@
   #main {
   	padding: 0 3%;
   }
+  #footer {
+  	padding: 0 20px;
+  	font-family: arial, helvetica, sans-serif;
+  	font-size: 12px;
+  }
   </style>
 
 </head>
@@ -43,15 +48,16 @@
 
   <header role="banner" id="sidebar" class="col-sm-4">
 
-	<aside id="logo" class="text-center">
-		<a href="/"><img src="/img/me.png"></a>
+	<aside id="logo" class="text-center ">
+		<a href="/" class="hidden-xs"><img src="/img/me.png"></a>
 		<h2>Tales from the<br> <span style="font-size: 56px;">Front End</span></h2>
 	<h4>All about Javascript, CSS, and ... well just Javascript really.</h4>
 	</aside>
 
 
-	<hr>
 
+<div class="hidden-xs">
+	<hr>
 <ul class="nav nav-stacked" style="max-width: 250px; margin: 0 auto;">
 	<li>
 		<a href="/">Home</a>
@@ -72,8 +78,10 @@
 &nbsp;&nbsp;&nbsp;
 <a href="http://www.linkedin.com/in/colyn/"><img src="/img/linkedin-small.png" style="vertical-align: middle;"></a>
 </div>
-
 <hr>
+
+</div>
+
 
 <p class="visible-lg">
 <strong>Tweets from the front-end</strong>
@@ -81,11 +89,7 @@
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 </p>
 
-<hr>
 
-<p><a rel="license" href="http://creativecommons.org/licenses/by-nc/3.0/deed.en_US"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc/3.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/3.0/deed.en_US">Creative Commons Attribution-NonCommercial 3.0 Unported License</a>.</p>
-
-<p><small><a href="http://docpad.org//">Powered by Docpad</a></small></p>
   </header>
   <section id="main" class="panel panel-default col-sm-8">
 	  
@@ -202,6 +206,16 @@ Found this useful? <a href="https://twitter.com/share" class="twitter-share-butt
 	</article>
   
   </section>
+
+
+<hr>
+
+<footer id="footer">
+  <p><a rel="license" href="http://creativecommons.org/licenses/by-nc/3.0/deed.en_US"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc/3.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/3.0/deed.en_US">Creative Commons Attribution-NonCommercial 3.0 Unported License</a>.</p>
+
+<p><small><a href="http://docpad.org//">Powered by Docpad</a></small></p>
+
+</footer>
 
 </div>
 <!--- SCripts -->
