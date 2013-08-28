@@ -10,6 +10,7 @@
   <title>What Now? | Tales from the Front-end!</title>
   <meta name="description" content="Personal site of Colyn Brown, Front-end development consultant (@colynb)" />
   <meta name="keywords" content="javascript, nodejs, software development, docpad, octopress, jekyll, php, css, modular design, website design, website development, front-end development" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- DocPad Meta -->
   <meta http-equiv="X-Powered-By" content="DocPad v6.50.0"/>
@@ -49,7 +50,7 @@
 	</aside>
 
 
-	
+	<hr>
 
 <ul class="nav nav-stacked" style="max-width: 250px; margin: 0 auto;">
 	<li>
@@ -60,14 +61,17 @@
   	
 		<li class="link"><a href="/pages/projects.html">Projects</a></li>
   	
-	<li>
-		<a href="https://twitter.com/colynb"><img src="/img/twitter-small.png" style="vertical-align: middle;">&nbsp;@colynb</a>
-	</li>
 
-	<li>
-		<a href="https://github.com/colynb"><img src="/img/github-small.png" style="vertical-align: middle;">&nbsp;/colynb</a>
-	</li>
 </ul>
+<hr>
+
+<div class="text-center"  style="max-width: 250px; margin: 0 auto;">
+<a href="https://twitter.com/colynb"><img src="/img/twitter-small.png" style="vertical-align: middle;"></a>
+&nbsp;&nbsp;&nbsp;
+<a href="https://github.com/colynb"><img src="/img/github-small.png" style="vertical-align: middle;"></a>
+&nbsp;&nbsp;&nbsp;
+<a href="http://www.linkedin.com/in/colyn/"><img src="/img/linkedin-small.png" style="vertical-align: middle;"></a>
+</div>
 
 <hr>
 
@@ -158,7 +162,7 @@
 
 <p>The simplicity of setting up Docpad was one of the reasons I chose it over Octopress. The Docpad <a href="http://docpad.org/docs/intro">Getting Started Guide</a> is a great intro, so start there. The only difficulty I had was in getting my site deployed to Github Pages, using the Docpad plugin. The Docpad deployment guide makes a lot of assumptions about your level of understanding of how Github Pages works. This is all they provide from the docs:</p>
 
-<pre class="highlighted"><code class="coffeescript">npm install --save docpad-plugin-ghpages
+<pre class="highlighted"><code class="xml">npm install --save docpad-plugin-ghpages
 docpad deploy-ghpages
 </code></pre>
 
@@ -171,19 +175,19 @@ docpad deploy-ghpages
 </p>
 
 
-<pre class="highlighted"><code class="objectivec">~/Sites/colynb<span class="variable">.com</span>
-    ├── OUTPUT (colynb<span class="variable">.github</span><span class="variable">.io</span><span class="variable">.git</span>)
+<pre class="highlighted"><code class="xml">~/Sites/colynb.com
+    ├── OUTPUT (colynb.github.io.git)
     │   ├── icons
     │   ├── img
-    │   ├── index<span class="variable">.html</span>
+    │   ├── index.html
     │   ├── posts
     │   ├── scripts
     │   ├── styles
     │   └── vendor
-    ├── SOURCE (colynb<span class="variable">.github</span><span class="variable">.io</span>-SOURCE<span class="variable">.git</span>)
-    │   ├── docpad<span class="variable">.coffee</span>
+    ├── SOURCE (colynb.github.io-SOURCE.git)
+    │   ├── docpad.coffee
     │   ├── node_modules
-    │   ├── package<span class="variable">.json</span>
+    │   ├── package.json
     │   └── src
     │       ├── documents
     │       ├── files
@@ -193,7 +197,7 @@ docpad deploy-ghpages
 <p>To do this, you just need to tell Docpad where it should save the output. You do that by modifying the docpad.coffee file. Per the <a href="http://docpad.org/docs/config#available-configuration">config docs</a>, you just need to set the <code>outPath</code></p>
 
 
-<pre class="highlighted"><code class="http"><span class="attribute">outPath</span>: <span class="string">'../OUTPUT'</span></code></pre>
+<pre class="highlighted"><code class="xml">outPath: '../OUTPUT'</code></pre>
 
 
 <p>This will allow you to create and maintain two separate repositories, one for the output (which gets pushed to Github Pages), and the other for your source code.</p>
@@ -211,9 +215,9 @@ docpad deploy-ghpages
 </p>
 
 
-<pre class="highlighted"><code class="objectivec">~/Sites/colynb<span class="variable">.com</span>
-    ├── OUTPUT (colynb<span class="variable">.github</span><span class="variable">.io</span><span class="variable">.git</span>)
-    │   ├── CNAME &lt;--- contains <span class="string">"colynb.com"</span>
+<pre class="highlighted"><code class="xml">~/Sites/colynb.com
+    ├── OUTPUT (colynb.github.io.git)
+    │   ├── CNAME <span class="tag">&lt;<span class="title">---</span> <span class="attribute">contains</span> "<span class="attribute">colynb.com</span>"
 </code></pre>
 
 <p>
