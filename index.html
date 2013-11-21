@@ -162,10 +162,9 @@ gulp.task(<span class="string">'default'</span>, <span class="keyword">function<
 
 });</code></pre>
 <p>This example gulp file has 3 tasks: swig template compilation (templates), css minification (styles), and default (default). Each can be run on the command line separately:</p>
-<p>```
-$ gulp templates // or
-$ gulp styles // or
-$ gulp</p>
+<pre class="highlighted"><code class="coffeescript">$ gulp templates <span class="regexp">//</span> <span class="keyword">or</span>
+$ gulp styles <span class="regexp">//</span> <span class="keyword">or</span>
+$ gulp</code></pre>
 <p>In this example, the default task runs both the templates and styles tasks plus starts a watcher method that watches for changes to particular files and then runs a specified task when the file changes.</p>
 <p>That&#39;s it, I think it&#39;s all pretty self-explanatory. I&#39;ve written a couple plugins for it already that I&#39;ve been using in my projects: <a href="https://npmjs.org/package/gulp-swig">gulp-swig</a> and <a href="https://npmjs.org/package/gulp-html-prettify">gulp-html-prettify</a>.</p>
 <hr/><label class="label label-default">Sat Aug 24 2013 17:00:00 GMT-0700 (MST)</label><h2 class="title"><a href="/posts/dom-horror-with-emberjs.html">DOM Horror with EmberJS</a></h2><p>I started using the Javascript framework, <a href="http://emberjs.com">EmberJS</a>, after using <a href="http://angularjs.org/">AngularJS</a> for a few months. So far, there&#39;s a level of friendliness in Ember that I don&#39;t see in Angular. There&#39;s a nomenclature within Angular that is a little foreign to me and has made the learning curve a little more steep for me.</p>
