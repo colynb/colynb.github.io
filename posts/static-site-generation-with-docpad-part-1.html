@@ -13,7 +13,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- DocPad Meta -->
-  <meta http-equiv="X-Powered-By" content="DocPad v6.50.0"/>
+  <meta name="generator" content="DocPad v6.54.9" />
 
   <style >html.wait {
 	cursor: wait !important;
@@ -44,7 +44,7 @@
 		<p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
 	<![endif]-->
 
-<div class="">
+<div>
 
   <header role="banner" id="sidebar" class="col-sm-4">
 
@@ -122,7 +122,7 @@
 
 <label class="label label-default">Fri Aug 02 2013 00:00:00 GMT-0700 (MST)</label>
 <h1 class="entry-title">Static Site Generation With Docpad (Part 1)</h1>
-<div><h4>Introduction</h4>
+<div><h4 id="introduction">Introduction</h4>
 <p>Since this is my first blog entry, I think it makes sense for me to talk about the technology behind it a little. The whole site is statically generated on my Macbook using <a href="http://docpad.org/">Docpad</a>, and deployed to <a href="http://pages.github.com/">Github Pages</a>.</p>
 <p>&quot;Going static&quot; seems to be the trend within the coding community, and for good reason. Though static site generators are not at all new, I think a couple development trends have factored into it becoming a popular choice with developers.</p>
 <ol>
@@ -133,7 +133,7 @@
  Another big contributing factor in the popularity of static sites is that most developers I know work almost exclusively local. They do all their coding on their laptops. There are so many tools that help with this that it makes it so there really is no reason not to anymore. Logging into your live site through an admin interface, in my opinion seems outdated and cumbersome and leaves your site open to potential security exploits. Now that we&#39;re all working locally, it&#39;s the next logical step to just administer our blogs locally as well.</li>
 </ol>
 
-<h4>So, what is Docpad?</h4>
+<h4 id="so-what-is-docpad-">So, what is Docpad?</h4>
 <p>
     Docpad is a static site generator built in <a href="http://nodejs.org/">NodeJS</a> and <a href="http://expressjs.com/">Express</a>. What this means is that Docpad gives you a set of tools that lets you code your site using templates and layouts, and all the other things you&#39;re used to using for building dynamic sites. The difference is that it will generate all your pages as plain old static HTML pages, out to an output folder that can be served by any web server (including through localhost using Express).
 </p>
@@ -183,10 +183,10 @@ Found this useful? <a href="https://twitter.com/share" class="twitter-share-butt
   </section>
 
 
-<hr>
 
-<footer id="footer">
-  <p><a rel="license" href="http://creativecommons.org/licenses/by-nc/3.0/deed.en_US"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc/3.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/3.0/deed.en_US">Creative Commons Attribution-NonCommercial 3.0 Unported License</a>.</p>
+<footer id="footer" class="clearfix">
+ <hr>
+ <p><a rel="license" href="http://creativecommons.org/licenses/by-nc/3.0/deed.en_US"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc/3.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/3.0/deed.en_US">Creative Commons Attribution-NonCommercial 3.0 Unported License</a>.</p>
 
 <p><small><a href="http://docpad.org//">Powered by Docpad</a></small></p>
 

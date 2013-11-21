@@ -13,7 +13,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- DocPad Meta -->
-  <meta http-equiv="X-Powered-By" content="DocPad v6.50.0"/>
+  <meta name="generator" content="DocPad v6.54.9" />
 
   <style >html.wait {
 	cursor: wait !important;
@@ -44,7 +44,7 @@
 		<p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
 	<![endif]-->
 
-<div class="">
+<div>
 
   <header role="banner" id="sidebar" class="col-sm-4">
 
@@ -120,12 +120,51 @@
 	<article class="post panel-body">
 
 
+<div id="post-list"><section class="recent-posts"><label class="label label-default">Tue Nov 19 2013 17:00:00 GMT-0700 (MST)</label><h2 class="title"><a href="/posts/getting-started-with-gulp.html">Getting Started with Gulp</a></h2><p>I recently discovered a new javascript based build automation tool called <a href="https://github.com/wearefractal/gulp">Gulp</a> by <a href="http://twitter.com/wearefractal">@wearefractal</a>. It&#39;s extremely simple to learn and use and can easily compete with gruntjs for a variety of different projects. It&#39;s so easy you&#39;ll be a Gulp expert after watching these <a href="http://slid.es/contra/gulp">slides</a></p>
+<h3 id="installing">Installing</h3>
+<p>In your project folder install the gulp module:</p>
+<p><code>npm install gulp</code></p>
+<p>Next, download a <a href="https://npmjs.org/search?q=gulpplugin">gulp plugin</a> like <a href="https://npmjs.org/package/gulp-minify-css">gulp-minify-css</a> or <a href="https://npmjs.org/package/gulp-swig">gulp-swig</a></p>
+<p><code>npm install gulp-minify-css gulp-swig</code></p>
+<p>Then create a <code>Gulpfile.js</code> file.</p>
+<pre class="highlighted"><code class="coffeescript"><span class="regexp">//</span> Gulpfile.js
 
-<div id="post-list">
-  <section class="recent-posts">
-    <label class="label label-default">Sat Aug 24 2013 17:00:00 GMT-0700 (MST)
-    </label>
-    <h2 class="title"><a href="/posts/dom-horror-with-emberjs.html">DOM Horror with EmberJS</a></h2><p>I started using the Javascript framework, <a href="http://emberjs.com">EmberJS</a>, after using <a href="http://angularjs.org/">AngularJS</a> for a few months. So far, there&#39;s a level of friendliness in Ember that I don&#39;t see in Angular. There&#39;s a nomenclature within Angular that is a little foreign to me and has made the learning curve a little more steep for me.</p>
+<span class="reserved">var</span> gulp = require(<span class="string">'gulp'</span>);
+<span class="reserved">var</span> swig = require(<span class="string">'gulp-swig'</span>);
+<span class="reserved">var</span> minifycss = require(<span class="string">'gulp-minify-css'</span>);
+
+<span class="regexp">//</span> compile, minify, <span class="keyword">and</span> copy templates
+gulp.task(<span class="string">'templates'</span>, <span class="reserved">function</span>(){
+  gulp.src(<span class="string">"./src/templates/*.swig"</span>)
+    .pipe(swig())
+    .pipe(gulp.dest(<span class="string">"./public/"</span>));
+});
+
+<span class="regexp">//</span> minify <span class="keyword">and</span> copy styles
+gulp.task(<span class="string">'styles'</span>, <span class="reserved">function</span>(){
+  gulp.src(<span class="string">"./src/assets/css/*.css"</span>)
+    .pipe(minifycss())
+    .pipe(gulp.dest(<span class="string">"./public/assets/css"</span>));
+});
+
+
+gulp.task(<span class="string">'default'</span>, <span class="reserved">function</span>(){
+  gulp.run(<span class="string">'templates'</span>, <span class="string">'styles'</span>);
+
+  <span class="regexp">//</span> watch files <span class="keyword">and</span> run scripts <span class="keyword">if</span> they change
+  gulp.watch(<span class="string">"./src/templates/*.swig"</span>, <span class="reserved">function</span>(event){
+    gulp.run(<span class="string">'templates'</span>);
+  });
+
+  gulp.watch(<span class="string">"./src/assets/css/*.css"</span>, <span class="reserved">function</span>(event){
+    gulp.run(<span class="string">'styles'</span>);
+  });
+
+});</code></pre>
+<p>This gulp file has 3 tasks: swig template compilation (templates), css minification (styles), and default (default). Each can be run on the command line separately:</p>
+<p><code>gulp templates</code> or <code>gulp styles</code> or just the default <code>gulp</code></p>
+<p>In this example, the default task runs both the templates and styles tasks plus starts a watcher method that watches for changes to particular files and then runs a specified task when the file changes.</p>
+<hr/><label class="label label-default">Sat Aug 24 2013 17:00:00 GMT-0700 (MST)</label><h2 class="title"><a href="/posts/dom-horror-with-emberjs.html">DOM Horror with EmberJS</a></h2><p>I started using the Javascript framework, <a href="http://emberjs.com">EmberJS</a>, after using <a href="http://angularjs.org/">AngularJS</a> for a few months. So far, there&#39;s a level of friendliness in Ember that I don&#39;t see in Angular. There&#39;s a nomenclature within Angular that is a little foreign to me and has made the learning curve a little more steep for me.</p>
 <p>After spending a few weeks getting familiar with Ember, going through the documentation and tutorials, I really started getting into it. I feel very productive with it.</p>
 <p>Then...</p>
 <p>There&#39;s something about Ember that you should be aware of that I hadn&#39;t noticed at first. I opened the DOM inspector in Chrome to see the generated HTML, and I found something that looked similar to this nightmarish chunk of HTML:</p>
@@ -179,11 +218,7 @@
 <p>And this is the code that&#39;s generated right from their starter template! </p>
 <p>Yeah, the ember docs <a href="http://emberjs.com/guides/understanding-ember/keeping-templates-up-to-date/">explain it</a> so I get why it has to be that way. Nevertheless, it&#39;s something that has been hard for me to accept. I don&#39;t see anything like that being generated by Angular. This seems like an awful lot of bloat that could potentially make it harder for you to style your pages.</p>
 <p>I&#39;ll continue to use Ember but I think this needs to be fixed.</p>
-
-    <hr/>
-    <label class="label label-default">Fri Aug 23 2013 17:00:00 GMT-0700 (MST)
-    </label>
-    <h2 class="title"><a href="/posts/static-site-generation-with-docpad-part-2.html">Static Site Generation With Docpad (Part 2)</a></h2><p><a href="/posts/static-site-generation-with-docpad-part-1.html">&lt; Part 1</a></p>
+<hr/><label class="label label-default">Fri Aug 23 2013 17:00:00 GMT-0700 (MST)</label><h2 class="title"><a href="/posts/static-site-generation-with-docpad-part-2.html">Static Site Generation With Docpad (Part 2)</a></h2><p><a href="/posts/static-site-generation-with-docpad-part-1.html">&lt; Part 1</a></p>
 <h4>Setting Up</h4>
 
 <p>The simplicity of setting up Docpad was one of the reasons I chose it over Octopress. The Docpad <a href="http://docpad.org/docs/intro">Getting Started Guide</a> is a great intro, so start there. The only difficulty I had was in getting my site deployed to Github Pages, using the Docpad plugin. The Docpad deployment guide makes a lot of assumptions about your level of understanding of how Github Pages works. This is all they provide from the docs:</p>
@@ -228,7 +263,7 @@ docpad deploy-ghpages
 
 <p>This will allow you to create and maintain two separate repositories, one for the output (which gets pushed to Github Pages), and the other for your source code.</p>
 
-<h4>Deploying to Github Pages with your own Domain</h4>
+<h4 id="deploying-to-github-pages-with-your-own-domain">Deploying to Github Pages with your own Domain</h4>
 <p>
     I decided to host my site on Github, primarily because it&#39;s free, but also because it&#39;s super convenient to commit and push, then serve everything with the same service.<br></p>
 
@@ -252,11 +287,7 @@ docpad deploy-ghpages
 
 <p>
     And that&#39;s it. If you have any questions or need any assistance, leave a comment below or find me on <a href="https://twitter.com/colynb">twitter</a>.
-</p>
-    <hr/>
-    <label class="label label-default">Fri Aug 02 2013 00:00:00 GMT-0700 (MST)
-    </label>
-    <h2 class="title"><a href="/posts/static-site-generation-with-docpad-part-1.html">Static Site Generation With Docpad (Part 1)</a></h2><h4>Introduction</h4>
+</p><hr/><label class="label label-default">Fri Aug 02 2013 00:00:00 GMT-0700 (MST)</label><h2 class="title"><a href="/posts/static-site-generation-with-docpad-part-1.html">Static Site Generation With Docpad (Part 1)</a></h2><h4 id="introduction">Introduction</h4>
 <p>Since this is my first blog entry, I think it makes sense for me to talk about the technology behind it a little. The whole site is statically generated on my Macbook using <a href="http://docpad.org/">Docpad</a>, and deployed to <a href="http://pages.github.com/">Github Pages</a>.</p>
 <p>&quot;Going static&quot; seems to be the trend within the coding community, and for good reason. Though static site generators are not at all new, I think a couple development trends have factored into it becoming a popular choice with developers.</p>
 <ol>
@@ -267,7 +298,7 @@ docpad deploy-ghpages
  Another big contributing factor in the popularity of static sites is that most developers I know work almost exclusively local. They do all their coding on their laptops. There are so many tools that help with this that it makes it so there really is no reason not to anymore. Logging into your live site through an admin interface, in my opinion seems outdated and cumbersome and leaves your site open to potential security exploits. Now that we&#39;re all working locally, it&#39;s the next logical step to just administer our blogs locally as well.</li>
 </ol>
 
-<h4>So, what is Docpad?</h4>
+<h4 id="so-what-is-docpad-">So, what is Docpad?</h4>
 <p>
     Docpad is a static site generator built in <a href="http://nodejs.org/">NodeJS</a> and <a href="http://expressjs.com/">Express</a>. What this means is that Docpad gives you a set of tools that lets you code your site using templates and layouts, and all the other things you&#39;re used to using for building dynamic sites. The difference is that it will generate all your pages as plain old static HTML pages, out to an output folder that can be served by any web server (including through localhost using Express).
 </p>
@@ -278,10 +309,7 @@ docpad deploy-ghpages
 
 <p>
     In the next post, I will walk you through <a href="/posts/static-site-generation-with-docpad-part-2.html">getting setup with Docpad</a> and publishing to Github Pages
-</p>
-    <hr/>
-  </section>
-</div>
+</p><hr/></section></div>
   
 
 
@@ -290,10 +318,10 @@ docpad deploy-ghpages
   </section>
 
 
-<hr>
 
-<footer id="footer">
-  <p><a rel="license" href="http://creativecommons.org/licenses/by-nc/3.0/deed.en_US"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc/3.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/3.0/deed.en_US">Creative Commons Attribution-NonCommercial 3.0 Unported License</a>.</p>
+<footer id="footer" class="clearfix">
+ <hr>
+ <p><a rel="license" href="http://creativecommons.org/licenses/by-nc/3.0/deed.en_US"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc/3.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/3.0/deed.en_US">Creative Commons Attribution-NonCommercial 3.0 Unported License</a>.</p>
 
 <p><small><a href="http://docpad.org//">Powered by Docpad</a></small></p>
 
